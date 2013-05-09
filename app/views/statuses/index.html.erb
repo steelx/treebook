@@ -1,0 +1,23 @@
+<div class="page-header">
+	<h2>Listing statuses</h2>
+</div>
+
+<div class="pager">
+<%= link_to 'Post New Status', new_status_path, class:'btn btn-success' %>
+</div>
+
+<div class="statuses">
+<% @statuses.each do |status| %>
+  <div class="thumbnail status">
+    <p><strong><%= status.name %></strong></p>
+    <p><%= status.content %></p>
+    <div class="meta">
+		<%= link_to time_ago_in_words(status.created_at) + ' ago', status %>
+		<span class="admin">
+		 | <%= link_to 'Edit', edit_status_path(status) %> | 
+		<%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</span>	
+	</div>
+  </div>
+<% end %>
+</div>
