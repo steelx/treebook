@@ -1,27 +1,20 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :first_name %>
-  <%= f.text_field :first_name, :autofocus => true %></div>
+  <fieldset>
+    <legend>Sign up</legend>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :profile_name %>
 
-  <div><%= f.label :last_name %>
-  <%= f.text_field :last_name %></div>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
 
-  <div><%= f.label :profile_name %>
-  <%= f.text_field :profile_name %></div>
-
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div class="form-actions"><%= f.button :submit, "Sign up" %></div>
+  </fieldset>
 <% end %>
-
+<div class="alert alert-info">
 <%= render "devise/shared/links" %>
+</div>
